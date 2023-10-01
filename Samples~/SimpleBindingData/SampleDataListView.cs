@@ -22,8 +22,6 @@ public class SampleDataListView : BaseListView<SampleDataView, SampleData>
         Add(sampleData2);
         Debug.Log($"Item count {itemCollection.Count}");
         Remove(sampleData1);
-//        Remove(itemCollection[0]);
-        RemoveAt(0);
     }
 
     private void OnItemRemovedHandler(MonoBehaviour obj)
