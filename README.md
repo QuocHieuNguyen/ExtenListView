@@ -8,7 +8,6 @@ This will help you saving time from adding duplicated logic of binding data to a
 
  Open Package Manager and add git URL `https://github.com/QuocHieuNguyen/ExtenListView.git#com.quochieu.extenlistview` for latest version.
 
-# How To Use
 ## Basic Usage
 
 You can view this example in the folder Simple List.
@@ -157,7 +156,15 @@ public class SampleListView : BaseListView<MonoBehaviour>
 }
 ```
 ## How to change the way items are spawned ?
-
+The current implementation of `ItemLoader` use the Unity Engine Instantiatiation.
+```csharp
+public abstract class BaseListView<TItem> : MonoBehaviour where TItem : MonoBehaviour
+{
+    ...
+    protected IItemLoader<TItem> itemLoader = new InstantiatedItemLoader<TItem>();
+    ...
+}
+```
 You can customize the way items are spawned by creating a class implementing the `IItemLoader.cs` interface.
 
 ```csharp
@@ -167,6 +174,13 @@ public interface IItemLoader<T>
 
     public T DeSpawnItem(T instance);
 }
+```
+For example, the class `SimpleObjectPooling.cs` implementing that interface.
+
+Set the `ItemLoader` property to the updated implemetation.
+
+```csharp
+exampleListView.ItemLoader = new SimpleObjectPooling();
 ```
  <!-- ROADMAP -->
 # Roadmap
