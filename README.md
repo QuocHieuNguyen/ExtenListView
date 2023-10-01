@@ -12,7 +12,7 @@ This will help you saving time from adding duplicated logic of binding data to a
 
 You can view this example in the folder Simple List.
 
-In your Unity scene, after creating a simple UGUI Scroll List, create a class deprived from `BaseListView<TItem>`. Specify the type of game object you want to spawn as a item, in this example, the type `MonoBehavior` is specified, you can freely add your own logic in this class.
+In your Unity scene, after creating a simple UGUI Scroll List, create a class deprived of `BaseListView<TItem>`. Specify the type of game object you want to spawn as a item, in this example, the type `MonoBehavior` is specified, you can freely add your own logic in this class.
 ```csharp
 public class SampleListView : BaseListView<MonoBehaviour>
 {
@@ -43,7 +43,7 @@ public class SampleData
     public int index;
 }
 ```
-- Create a class deprived from `BaseItemView<TData>`, for example `SampleDataView.cs` the type parameter `TData` is the data class you just created. This is the class you want to add as Component to the Item Prefab that you will spawn from.
+- Create a class deprived of `BaseItemView<TData>`, for example `SampleDataView.cs` the type parameter `TData` is the data class you just created. This is the class you want to add as Component to the Item Prefab that you will spawn from.
 ```csharp
 public class SampleDataView : BaseItemView<SampleData>
 {
@@ -57,7 +57,7 @@ public class SampleDataView : BaseItemView<SampleData>
 }
 ```
 - Specify the way you will display the bound data in this class.
-- Create a class deprived from `BaseListView<TItem, TData>`, for example `SampleDataListView.cs`, the type parameter `TItem` is the Item Component class, and the type parameter `TData` is the data class.
+- Create a class deprived of `BaseListView<TItem, TData>`, for example `SampleDataListView.cs`, the type parameter `TItem` is the Item Component class, and the type parameter `TData` is the data class.
 
 ```csharp
 public class SampleDataListView : BaseListView<SampleDataView, SampleData>
@@ -86,6 +86,131 @@ public class SampleDataListView : BaseListView<SampleDataView, SampleData>
 ## Example of Seperation of Data & UI Logic
 
 You can view this example in the folder Tier Architecture Example.
+
+Seperation of Data Source, Logic Tier & UI Tier  is a way to build extensible, reusable and maintainable system.
+
+In the example, we will create a scrollable list displaying a list of button, when a button is clicked, the data is that button is updated and the its color change.
+
+- First, create a data class
+```csharp
+public class ExampleData
+{
+    public int Index;
+}
+```
+- Then, create a class for binding the data & logic, exposing the event handling the click event.
+
+```csharp
+public class ExampleItemView : SelectableItemView<ExampleData>
+{
+    [SerializeField] protected TextMeshProUGUI _labelText;
+
+    [SerializeField] protected Button _button;
+
+    public TextMeshProUGUI LabelText => _labelText;
+
+    public Button Button => _button;
+
+    protected virtual void Awake()
+    {
+        _button.onClick.AddListener(OnButtonClickedHandler);
+    }
+
+    public override void Bind(ExampleData data)
+    {
+        base.Bind(data);
+        _labelText.text = data.Index.ToString();
+    }
+
+    protected void OnButtonClickedHandler()
+    {
+        InvokeOnItemSelected();
+    }
+
+    protected virtual void OnDestroy()
+    {
+        _button.onClick.RemoveListener(OnButtonClickedHandler);
+    }
+}
+```
+- After that, create a class deprived of `SelectableListView.cs`, add method `GetItemViewByData`, `ChangeColor` and `UpdateData`.
+
+```csharp
+public class ExampleListView : SelectableListView<ExampleItemView, ExampleData>
+{
+    public event Action<ExampleData> OnDataSelected;
+
+    protected override void OnItemSelectedHandler(ExampleData data)
+    {
+        base.OnItemSelectedHandler(data);
+        OnDataSelected?.Invoke(data);
+    }
+
+    public ExampleItemView GetItemViewByData(ExampleData data)
+    {
+        ...
+    }
+
+    public void ChangeColor(ExampleItemView itemView)
+    {
+        ...
+    }
+
+    public void UpdateData(ExampleData data, ExampleItemView view)
+    {
+        ...
+    }
+    
+}
+```
+- The first type parameter `ExampleItemView` is the View part of the item, and the second type parameter `ExampleData` is the Data part.
+
+- In the `ExampleController.cs` class, create fake data then implement the view logic.
+
+```csharp
+public class ExampleController : MonoBehaviour
+{
+    [SerializeField] private ExampleListView exampleListView;
+    // Start is called before the first frame update
+    void Start()
+    {
+        // Set up data
+        ExampleData exampleData1 = new ExampleData()
+        {
+            Index = 0
+        };
+        ExampleData exampleData2 = new ExampleData()
+        {
+            Index = 1
+        };
+        
+        List<ExampleData> data = new List<ExampleData>()
+        {
+            exampleData1, exampleData2
+        };
+        
+        // Bind data
+        for (int i = 0; i < data.Count; i++)
+        {
+            exampleListView.Add(data[i]);
+        }
+        
+        // Subscribe
+        exampleListView.OnDataSelected += ExampleListViewOnOnDataSelected;
+    }
+
+    private void ExampleListViewOnOnDataSelected(ExampleData data)
+    {
+        ExampleItemView view = exampleListView.GetItemViewByData(data);
+        exampleListView.ChangeColor(view);
+        exampleListView.UpdateData(data, view);
+    }
+    
+}
+```
+- Add the `ExampleController.cs` and `ExampleListView.cs` class to a game object, and the `ExampleItemView.cs` class to an Item Prefab.
+- Then drag and drop the Item Prefab, the `ExampleListView` and the Parent Transform (most of the time is the Content game object) to the ExampleController component.
+
 ## Event Handling
 
 You can subscribe to the Add/Remove Item or their data
