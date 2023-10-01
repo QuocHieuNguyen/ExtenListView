@@ -8,6 +8,8 @@ This will help you saving time from adding duplicated logic of binding data to a
 
  Open Package Manager and add git URL `https://github.com/QuocHieuNguyen/ExtenListView.git#com.quochieu.extenlistview` for latest version.
 
+ Add Sample package for sample code.
+
 ## Basic Usage
 
 You can view this example in the folder Simple List.
