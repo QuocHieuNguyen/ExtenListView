@@ -123,8 +123,7 @@ public class SampleDataListView : BaseListView<SampleDataView, SampleData>
     }
 }
 ```
-
-```cysharp
+```csharp
 public class SampleListView : BaseListView<MonoBehaviour>
 {
     // Start is called before the first frame update
@@ -161,7 +160,7 @@ public class SampleListView : BaseListView<MonoBehaviour>
 
 You can customize the way items are spawned by creating a class implementing the `IItemLoader.cs` interface.
 
-```cysharp
+```csharp
 public interface IItemLoader<T> 
 {
     public T SpawnItem(T prefab);
