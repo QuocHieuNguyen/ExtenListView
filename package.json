@@ -17,5 +17,12 @@
     "name": "Quoc Hieu",
     "email": "quochieuforwork@gmail.com",
     "url": "https://www.unity3d.com"
-  }
+  },
+  "samples": [
+    {
+        "displayName": "Sample",
+        "description": "Contains sample scene to show how to use the package",
+        "path": "Samples~"
+    }
+  ]
 }
