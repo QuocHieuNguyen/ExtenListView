@@ -100,7 +100,7 @@ public class ExampleData
     public int Index;
 }
 ```
-- Then, create a class for binding the data & logic, exposing the event handling the click event.
+- Then, create a class for binding the data & logic, exposing the event handling of the click event.
 
 ```csharp
 public class ExampleItemView : SelectableItemView<ExampleData>
