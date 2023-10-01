@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "displayName": "ExtenListView",
   "description": "Common Package",
-  "unity": "2021.3.8",
+  "unity": "2021.3",
   "unityRelease": "0b5",
   "documentationUrl": "https://example.com/",
   "changelogUrl": "https://example.com/changelog.html",
