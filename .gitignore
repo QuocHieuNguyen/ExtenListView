@@ -1,0 +1,92 @@
+# =============== #
+# Unity generated #
+# =============== #
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+Assets/AssetStoreTools*
+Obj/
+UnityGenerated/
+Logs/
+
+# Ignore .folder/
+.*/
+
+# Visual Studio 2015 cache directory
+/.vs
+/.idea
+.vs/
+.idea/
+
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+ExportedObj/
+.consulo/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.suo
+*.unityproj
+*.zip
+*.rar
+
+# Unity3D generated meta files
+*.pidb.meta
+*.pdb.meta
+
+# ============ #
+# OS generated #
+# ============ #
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Assets/UnityVS/
+Assets/UnityVS.meta
+Assets/StreamingAssets/
+
+# ============ #
+# User Specify #
+# ============ #
+Assets/Plugins/Sirenix/Assemblies/AOT/
+# Assembly-CSharp.csproj.DotSettings #
+JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll
+Assets/Plugins/Editor/JetBrains/JetBrains.Rider.Unity.Editor.Plugin.Repacked.dll.meta
+
+=======
+# Unity3D Generated File On Crash Reports
+sysinfo.txt
+build_info.txt
+*.orig
+*.orig.meta
+Assets/Plugins/x86_64/
+Assets/Plugins/x86_64.meta
+
+# Builds
+*.apk
+*.unitypackage
+build/
+Demo/
+Demo.meta
+Demos/
+Demos.meta
+/.idea/.idea.demon-prototype/.idea/workspace.xml
+MemoryCaptures/
+MemoryCaptures.meta
+
+Assets/BuildReports/
+Assets/BuildReports.meta
