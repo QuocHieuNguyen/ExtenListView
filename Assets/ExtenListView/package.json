@@ -20,7 +20,7 @@
   },
   "samples": [
     {
-        "displayName": "Sample",
+        "displayName": "Example",
         "description": "Contains sample scene to show how to use the package",
         "path": "Samples~/SimpleBindingData"
     }
