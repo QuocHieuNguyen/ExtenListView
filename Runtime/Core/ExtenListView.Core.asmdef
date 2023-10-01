@@ -1,0 +1,16 @@
+{
+    "name": "ExtenListView.Core",
+    "rootNamespace": "",
+    "references": [
+        "GUID:c015b58060866eb489f09006c344d5ed"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
