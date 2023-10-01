@@ -8,7 +8,7 @@ This will help you saving time from adding duplicated logic of binding data to a
 
  Open Package Manager and add git URL `https://github.com/QuocHieuNguyen/ExtenListView.git#com.quochieu.extenlistview` for latest version.
 
- Add Sample package for sample code.
+ Add `Example` sample package in the Package Manager for sample code.
 
 ## Basic Usage
 
