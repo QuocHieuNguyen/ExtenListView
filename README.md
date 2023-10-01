@@ -135,7 +135,7 @@ public class ExampleItemView : SelectableItemView<ExampleData>
     }
 }
 ```
-- After that, create a class deprived of `SelectableListView.cs`, add method `GetItemViewByData`, `ChangeColor` and `UpdateData`.
+- After that, create a class deprived of `SelectableListView.cs`, add method `GetItemViewByData`, `ChangeColor` and `UpdateData`. Overriding the `OnItemSelectedHandler` method to handle selection event.
 
 ```csharp
 public class ExampleListView : SelectableListView<ExampleItemView, ExampleData>
