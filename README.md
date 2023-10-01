@@ -15,6 +15,10 @@ This will help you saving time from adding duplicated logic of binding data to a
 
 ## Example of Seperation of Data & UI Logic
 
+## Event Handling
+
+## How to change the way items are spawned ?
+
  <!-- ROADMAP -->
 # Roadmap
 
