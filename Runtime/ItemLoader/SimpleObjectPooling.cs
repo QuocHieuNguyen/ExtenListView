@@ -22,7 +22,7 @@ namespace ExtenListView.ItemLoader
             }
         }
 
-        public T Get()
+        private T Get()
         {
             foreach (var obj in pool)
             {
@@ -39,7 +39,7 @@ namespace ExtenListView.ItemLoader
             return newObj;
         }
 
-        public void ReturnToPool(T obj)
+        private void ReturnToPool(T obj)
         {
             obj.gameObject.SetActive(false);
         }
@@ -54,9 +54,7 @@ namespace ExtenListView.ItemLoader
 
         public T SpawnItem(T prefab)
         {
-            T newObj = Object.Instantiate(prefab, parentTransform);
-            newObj.gameObject.SetActive(true);
-            pool.Add(newObj);
+            T newObj = Get();
             return newObj;
         }
 

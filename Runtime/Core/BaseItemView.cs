@@ -9,11 +9,7 @@ namespace ExtenListView
     {
         private TData data;
 
-        public TData Data
-        {
-            get => data;
-            set => data = value;
-        }
+        public TData Data => data;
 
         public event Action<TData> OnDataBound; 
         public virtual void Bind(TData data)
